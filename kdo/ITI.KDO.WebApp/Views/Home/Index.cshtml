@@ -1,0 +1,59 @@
+﻿﻿@using ITI.KDO.WebApp.Services;
+@{
+    Token token = (Token)ViewData["Token"];
+    string email = (string)ViewData["Email"];
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>KDO Project</title>
+</head>
+<body>
+    <div id="app"></div>
+    <script>
+        (function () {
+            var KDO = (function () {
+                var identity = null;
+
+                var getIdentity = function () {
+                    return identity;
+                };
+
+                var setIdentity = function (i) {
+                    identity = i;
+                };
+
+                return {
+                    getIdentity: getIdentity,
+                    setIdentity: setIdentity
+                };
+            })();
+
+            this.ITI = this.ITI || {};
+            this.ITI.KDO = KDO;
+        })();
+    </script>
+    @if (token != null && email != null)
+    {
+        <script>
+            (function () {
+                ITI.KDO.setIdentity({
+                    bearer: {
+                        access_token: '@token.AccessToken',
+                        expires_in: @token.ExpiresIn
+                    },
+                    email: '@email'
+                });
+            })();
+        </script>
+    }
+    <environment names="Development">
+        <script type="text/javascript" src="http://localhost:8080/dist/kdo.js"></script>
+    </environment>
+    <environment names="Staging,Production">
+        <script type="text/javascript" src="~/dist/KDO.js"></script>
+    </environment>
+</body>
+</html>

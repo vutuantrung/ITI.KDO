@@ -1,0 +1,46 @@
+﻿﻿@using ITI.KDO.WebApp.Models.EmailViewModels;
+
+@model FriendInvitationViewModel
+@{
+    ViewData["Titre"] = "Send email invitation.";
+}
+
+<div class="container">
+    <div class="page-header">
+        <h1>@ViewData["Titre"]</h1>
+    </div>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+    <form asp-controller="Email" asp-action="FriendInvitation" method="post">
+        @if (!ViewContext.ViewData.ModelState.IsValid)
+        {
+            <div asp-validation-summary="All" class="alert alert-danger"></div>
+        }
+        <div class="form-group">
+            <label asp-for="RecipientsEmail">Recipients email: </label>
+            <input asp-for="RecipientsEmail" class="form-control" />
+            <span asp-validation-for="RecipientsEmail"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="SenderEmail">Sender email: </label>
+            <input asp-for="SenderEmail" class="form-control" />
+            <span asp-validation-for="SenderEmail"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Descriptions">Descriptions: </label>
+            <textarea asp-for="Descriptions" 
+                rows="5"
+                data-val-required="The Description field is required." 
+                data-val-maxlength-max="5000" 
+                data-val-maxlength="The field Description must be a string or array type with a maximum length of '5000'." 
+                data-val="true" class="form-control"></textarea>
+            <span asp-validation-for="Descriptions"></span>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block">Submit</button>
+        </div>
+        <div class="form-group">
+            <button type="reset" class="btn btn-primary btn-block">Reset</button>
+        </div>
+    </form>
+</div>

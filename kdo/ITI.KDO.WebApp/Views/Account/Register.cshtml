@@ -1,0 +1,56 @@
+﻿@using ITI.KDO.WebApp.Models.AccountViewModels
+
+
+<!--Mở view này lên chúng ta sẽ thấy rằng view định nghĩa model là 1 đối tượng của class RegisterViewModel được định nghĩa trong file Models/AccountViewModel. 
+    Đây là đoạn code định nghĩa class RegisterViewModel: -->
+@model RegisterViewModel
+
+@{
+    ViewData["Title"] = "Register";
+}
+<div class="container">
+    <div class="page-header">
+        <h1>@ViewData["Title"]</h1>
+    </div>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+    <form asp-controller="Account" asp-action="Register" method="post">
+        @if (!ViewContext.ViewData.ModelState.IsValid)
+        {
+            <div asp-validation-summary="All" alert alert-danger"></div>
+        }
+
+        <div class="form-group">
+            <label class="required" asp-for="FirstName">FirstName : </label>
+            <input asp-for="FirstName" class="form-control" required/>
+            <span asp-validation-for="FirstName"></span>
+        </div>
+        <div class="form-group">
+            <label class="required" asp-for="LastName">LastName : </label>
+            <input asp-for="LastName" class="form-control" required />
+            <span asp-validation-for="LastName"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Birthdate">BirthDate : </label>
+            <input asp-for="Birthdate" class="form-control" />
+            <span asp-validation-for="Birthdate"></span>
+        </div>
+        <div class="form-group">
+            <label class="required" asp-for="Email">Email : </label>
+            <input asp-for="Email" class="form-control" required />
+            <span asp-validation-for="Email"></span>
+        </div>
+
+        <div class="form-group">
+            <label class="required" asp-for="Password">Password : </label>
+            <input asp-for="Password" class="form-control" required/>
+            <span asp-validation-for="Password"></span>
+        </div>
+        <div class="form-group">
+            <label class="required" asp-for="ConfirmPassword">Confirm Password: </label>
+            <input asp-for="ConfirmPassword" class="form-control" required/>
+            <span asp-validation-for="ConfirmPassword"></span>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">S'enregistrer</button>
+    </form>
+</div>
