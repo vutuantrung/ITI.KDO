@@ -1,5 +1,6 @@
 class AuthService {
   constructor() {
+    this.fakeIdentity = '';
     this.logoutEndpoint = null;
     this.providers = {};
     this.allowedOrigins = [];
@@ -8,11 +9,13 @@ class AuthService {
   }
 
   get identity() {
-    return ITI.KDO.getIdentity();
+    return this.fakeIdentity;
+    // return ITI.KDO.getIdentity();
   }
 
   set identity(i) {
-    ITI.KDO.setIdentity(i);
+    this.fakeIdentity = i;
+    // ITI.KDO.setIdentity(i);
   }
 
   get isConnected() {
