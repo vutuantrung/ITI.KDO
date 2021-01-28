@@ -1,12 +1,15 @@
 import mutations from './mutations';
 import getters from './getters';
+import actions from './actions';
 
 export default {
   state() {
     return {
+      eventModel: {},
       eventNotificationList: []
     };
   },
   mutations,
+  actions,
   getters
 };
