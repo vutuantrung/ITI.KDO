@@ -12,8 +12,8 @@ export default {
   async [types.RESPONSE_INVITATION_CONTACT](context, payload) {
     try {
       if (payload.response === 'yes') {
-        context.state.contactModel.senderEmail = payload.firstEmail;
-        context.state.contactModel.recipientsEmail = payload.secondEmail;
+        context.state.contactModel.senderEmail = payload.senderEmail;
+        context.state.contactModel.recipientsEmail = payload.recipientsEmail;
 
         await NotificationApiService.setContactInvitationAsync(
           context.state.contactModel

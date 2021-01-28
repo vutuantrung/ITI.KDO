@@ -5,8 +5,8 @@ import actions from './actions';
 export default {
   state() {
     return {
-      contactNotificationList: [],
-      contactModel: {}
+      contactModel: {},
+      contactNotificationList: []
     };
   },
   mutations,

@@ -12,7 +12,7 @@ export default {
   async [types.RESPONSE_INVITATION_EVENT](context, payload) {
     try {
       if (payload.response === 'yes') {
-        context.state.eventModel.userId = payload.user.userId;
+        context.state.eventModel.userId = payload.userId;
         context.state.eventModel.eventId = payload.eventId;
 
         await NotificationApiService.setEventInvitationAsync(
