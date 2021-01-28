@@ -1,9 +1,4 @@
-import {
-  getAsync,
-  postAsync,
-  putAsync,
-  deleteAsync
-} from '../helpers/apiHelper';
+import { getAsync, postAsync } from '../helpers/apiHelper';
 
 const endpoint = '/api/notification';
 
